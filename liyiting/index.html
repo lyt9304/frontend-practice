@@ -1,0 +1,32 @@
+<html>
+	<head>
+		<title>My Todo List</title>
+	</head>
+
+	<body>
+		<input id="new-todo" type="text" placeholder="请输入新的事项">
+		<button id="add">添加</button>
+
+		<ul id="list"></ul>
+	</body>
+
+	<script src="./jquery-3.2.1.min.js"></script>
+	<script>
+		var $addBtn = $('#add')
+		var $list = $('#list')
+		var $input = $('#new-todo')
+		$addBtn.on('click', function(){
+			var value = $input.val()
+			$list.html($list.html() + '<li>' + value + '<button class="removeBtn">删除</button><button class="completeBtn">完成</button></li>')
+		})
+
+		$(document).on('click', '.removeBtn', function(e){
+			$(e.target).parent.remove()
+		})
+
+		$(document).on('click', '.completeBtn', function(e){
+			$(e.target).parent().css('text-decoration', 'line-through')
+		})
+	</script>
+
+</html>
